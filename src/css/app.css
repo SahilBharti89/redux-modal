@@ -1,0 +1,36 @@
+.app {
+    text-align: center;
+    height: 100vh;
+    background: black;
+  }
+  
+  .app-logo {
+    animation: app-logo-spin infinite 20s linear;
+    height: 80px;
+  }
+  
+  .app-header {
+    background-color: #161c2b;
+    height: 200px;
+    padding: 20px;
+    color: white;
+  }
+  
+  .app-title {
+    font-size: 1.5em;
+  }
+  
+  .app-intro {
+    font-size: small;
+    color: whitesmoke;
+  }
+  
+  .modal-types {
+    height: calc(100vh - 250px);
+  }
+  
+  @keyframes app-logo-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
