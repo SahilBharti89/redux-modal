@@ -1,7 +1,6 @@
 import  React, { useState, useEffect } from 'react'
 import { connect } from 'react-redux'
 import modalTypes  from './modals/index'
-import Modal from 'react-modal'
 
 const MODAL_TYPES = {
   'alert': modalTypes.alertModal,
@@ -16,14 +15,7 @@ function ModalRoot( props ) {
   useEffect(() => {
     if(props && props.modalProps.open !== state.modalIsOpen)
       setState({ modalIsOpen: props.modalProps.open})
-  })
-  // componentWillReceiveProps(nextProps) {
-  //   if (nextProps.modalProps.open !== this.props.modalProps.open) {
-  //     this.setState({
-  //       modalIsOpen: nextProps.modalProps.open
-  //     })
-  //   }
-  // }
+  }, [props])
 
   const closeModal = () => {
     props.hideModal();
@@ -32,25 +24,16 @@ function ModalRoot( props ) {
   if (props && !props.modalType) {
     return null
   }
-
+  let style= state.modalIsOpen ? {display: 'block'} : {display: 'none'}
   const SpecifiedModal = MODAL_TYPES[props.modalType]
   return (
-      // <div style={{display: 'block'}}>
-      <div>
-        <Modal
-          isOpen={state.modalIsOpen}
-          onRequestClose={closeModal}
-          contentLabel="Example Modal"
-          ariaHideApp={false}
-          overlayClassName="modal fade show"
-          bodyOpenClassName="modal-open"
-          className="modal-dialog modal-dialog-centered"
-        >
+      <div className="modal" style={style}>
+        <div className="modal-dialog">
           <SpecifiedModal 
             closeModal={closeModal}
             { ...props.modalProps}
           />
-        </Modal>
+        </div>
       </div>
     )
 

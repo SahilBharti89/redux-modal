@@ -6,10 +6,10 @@ import { showModal, hideModal } from './store/modalActions';
 import './css/index.css'
 import './css/template.css'
 import './css/app.css'
+// import './css/modal.css'
 
 const MESSAGE = "A redux modal component."
 function App( props ) {
-  debugger
   console.log("props", props)
   let [state, setState] = useState({ address: '' })
 
