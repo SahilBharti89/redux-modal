@@ -6,11 +6,9 @@ import { showModal, hideModal } from './store/modalActions';
 import './css/index.css'
 import './css/template.css'
 import './css/app.css'
-// import './css/modal.css'
 
 const MESSAGE = "A redux modal component."
 function App( props ) {
-  console.log("props", props)
   let [state, setState] = useState({ address: '' })
 
   const closeModal = () => {
@@ -122,7 +120,6 @@ function App( props ) {
 const mapDispatchToProps = dispatch => ({
   hideModal: () => dispatch(hideModal()),
   showModal: (modalProps, modalType) => {
-    console.log("modalProps, modalType", modalProps, modalType)
     dispatch(showModal({modalProps, modalType}))
   }
 })

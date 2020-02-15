@@ -13,9 +13,9 @@ function ModalRoot( props ) {
   let [state, setState] = useState({ modalIsOpen: props && props.modalProps.open })
 
   useEffect(() => {
-    if(props && props.modalProps.open !== state.modalIsOpen)
+    if(state.modalIsOpen !== props.modalProps.open)
       setState({ modalIsOpen: props.modalProps.open})
-  }, [props])
+  }, [props.modalProps.open, state.modalIsOpen])
 
   const closeModal = () => {
     props.hideModal();
@@ -24,7 +24,7 @@ function ModalRoot( props ) {
   if (props && !props.modalType) {
     return null
   }
-  let style= state.modalIsOpen ? {display: 'block'} : {display: 'none'}
+  let style = { display: state.modalIsOpen ? 'block' : 'none' }
   const SpecifiedModal = MODAL_TYPES[props.modalType]
   return (
       <div className="modal" style={style}>
